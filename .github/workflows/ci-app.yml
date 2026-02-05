@@ -3,7 +3,7 @@ name: CI App (Python)
 on:
   push:
     branches:
-      - feature/*
+      - main
   pull_request:
     branches:
       - main
