@@ -1,0 +1,48 @@
+name: CI App (Python)
+
+on:
+  push:
+    branches:
+      - feature/*
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  app-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run unit tests
+      run: pytest -v
+
+    - name: Run lint (Flake8)
+      run: flake8 .
+
+    - name: Run security scan (Bandit)
+      run: bandit -r . -ll
+
+    - name: Package application
+      run: zip -r app.zip . -x ".git/*" ".github/*"
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: flask-app
+        path: app.zip
