@@ -46,3 +46,7 @@ jobs:
       with:
         name: flask-app-artifact
         path: app.zip
+  trigger-cd:
+    needs: app-ci
+    uses: ./.github/workflows/cd-app.yml
+    secrets: inherit
