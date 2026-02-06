@@ -23,8 +23,8 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           path: .
 
-      - name: Unzip artifact
-        run: unzip app.zip
+      - name: Unzip app
+        run: unzip flask-app.zip
 
       - name: Azure Login (OIDC)
         uses: azure/login@v2
