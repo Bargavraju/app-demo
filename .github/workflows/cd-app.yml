@@ -2,7 +2,7 @@ name: CD App (Azure Deploy)
 
 on:
   workflow_run:
-    workflows: ["CI App"]
+    workflows: ["CI App (Python)"]
     types:
       - completed
 
@@ -16,8 +16,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Download app artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: flask-app
+          path: .
+
+      - name: Unzip artifact
+        run: unzip app.zip
 
       - name: Azure Login (OIDC)
         uses: azure/login@v2
