@@ -43,9 +43,10 @@ jobs:
       uses: SonarSource/sonarcloud-github-action@v2
       
       env:
-        # SONAR_ORGANIZATION: bargavraju
-        # SONAR_PROJECT_KEY: Bargavraju_app-demo
+        
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_ORGANIZATION: Bargavraju
+        SONAR_PROJECT_KEY: Bargavraju_app-demo
 
       with:
         projectBaseDir: .
