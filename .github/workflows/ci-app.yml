@@ -41,12 +41,14 @@ jobs:
     
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v2
+      
+      env:
+        # SONAR_ORGANIZATION: bargavraju
+        # SONAR_PROJECT_KEY: Bargavraju_app-demo
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       with:
         projectBaseDir: .
-      env:
-        SONAR_ORGANIZATION: bargavraju
-        SONAR_PROJECT_KEY: Bargavraju_app-demo
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Package application
       run: |
