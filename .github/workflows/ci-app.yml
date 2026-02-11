@@ -36,7 +36,6 @@ jobs:
 
     # - name: Run unit tests
     #   run: pytest -v
-
     - name: Run unit tests with coverage     # Added coverage
       run: |
         pip install pytest pytest-cov        # Added coverage
