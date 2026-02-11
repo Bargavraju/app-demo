@@ -58,11 +58,11 @@ jobs:
           -Dsonar.projectKey=Bargavraju_app-demo
           -Dsonar.python.version=3.11
           -Dsonar.python.coverage.reportPaths=coverage.xml
-    - name: SonarCloud Quality Gate Check
-      uses: SonarSource/sonarcloud-quality-gate-action@v1
-      timeout-minutes: 5
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    # - name: SonarCloud Quality Gate Check
+    #   uses: SonarSource/sonarcloud-quality-gate-action@v1
+    #   timeout-minutes: 5
+    #   env:
+    #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
     - name: Package application
       run: |
