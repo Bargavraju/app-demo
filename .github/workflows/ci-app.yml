@@ -7,16 +7,19 @@ on:
   pull_request:
     branches:
       - main
-permissions:
-  contents: read
-  id-token: write
-  actions: read
-  pull-requests: write #sonar
+# permissions:
+#   contents: read
+#   id-token: write
+#   actions: read
+#   pull-requests: write #sonar
 
 jobs:
   app-ci:
     runs-on: ubuntu-latest
-
+    
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
